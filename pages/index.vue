@@ -1,63 +1,40 @@
 <template>
-    <v-card class="mx-auto my-16 px-6 py-8 " max-width="344">
-      <v-form
-        v-model="form"
-        @submit.prevent="onSubmit"
-      >
-        <v-text-field
-          v-model="email"
-          :readonly="loading"
-          :rules="[required]"
-          class="mb-2"
-          label="Email"
-          clearable
-        ></v-text-field>
+  <v-card class="mx-auto my-16 px-6 py-8 " max-width="344">
+    <v-form v-model="form" @submit.prevent="onSubmit">
+      <v-text-field v-model="email" :readonly="loading" :rules="[required]" class="mb-2" label="Email Or Phone Number"
+        clearable></v-text-field>
 
-        <v-text-field
-          v-model="password"
-          :readonly="loading"
-          :rules="[required]"
-          label="Password"
-          placeholder="Enter your password"
-          clearable
-        ></v-text-field>
+      <v-text-field v-model="password" :readonly="loading" :rules="[required]" label="Password"
+        placeholder="Enter your password" clearable></v-text-field>
 
-        <br>
+      <br>
 
-        <v-btn
-          :disabled="!form"
-          :loading="loading"
-          color="success"
-          size="large"
-          type="submit"
-          variant="elevated"
-          block
-        >
-          Sign In
-        </v-btn>
-      </v-form>
-    </v-card>
+      <v-btn :disabled="!form" :loading="loading" color="success" size="large" type="submit" variant="elevated" block>
+        Sign In
+      </v-btn>
+    </v-form>
+  </v-card>
 </template>
 <script>
-  export default {
-    data: () => ({
-      form: false,
-      email: null,
-      password: null,
-      loading: false,
-    }),
+export default {
+  data: () => ({
+    form: false,
+    email: null,
+    password: null,
+    loading: false,
+  }),
 
-    methods: {
-      onSubmit () {
-        if (!this.form) return
+  methods: {
+    onSubmit() {
+      if (!this.form) return
 
-        this.loading = true
+      this.loading = true
 
-        setTimeout(() => (this.loading = false), 2000)
-      },
-      required (v) {
-        return !!v || 'Field is required'
-      },
+      setTimeout(() => (this.loading = false), 2000)
     },
-  }
+    required(v) {
+      return !!v || 'Field is required'
+    },
+  },
+}
 </script>
